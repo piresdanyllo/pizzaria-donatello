@@ -53,17 +53,21 @@ function closeModal() {
     }, 500)
 }
 
-function addPizza() {
-    modalQtd++
-    dom('.pizzaInfo--qt').innerHTML = modalQtd
-}
+domAll('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item) => {
+    item.addEventListener('click', closeModal);
+})
 
-function removePizza() {
-    if (modalQtd > 1) {
-        modalQtd--
-        dom('.pizzaInfo--qt').innerHTML = modalQtd
+dom('.pizzaInfo--qtmais').addEventListener('click', () => {
+    modalQtd++;
+    dom('.pizzaInfo--qt').innerHTML = modalQtd;
+})
+
+dom('.pizzaInfo--qtmenos').addEventListener('click', () => {
+    if (modalQtd > 1)  {
+        modalQtd--;
+        dom('.pizzaInfo--qt').innerHTML = modalQtd;
     }
-}
+})
 
 domAll('.pizzaInfo--size').forEach((size) => {
     size.addEventListener('click', () => {
@@ -72,7 +76,7 @@ domAll('.pizzaInfo--size').forEach((size) => {
     })
 })
 
-function addPizzaCart() {
+qS('.pizzaInfo--addButton').addEventListener('click', () => {
     let sizePizza = parseInt(dom('.pizzaInfo--size.selected').getAttribute('data-key'))
     let identifier = pizzaJson[modalKey].id + '@' + sizePizza
     let key = cart.findIndex((item) => item.idSize == identifier)
@@ -89,7 +93,7 @@ function addPizzaCart() {
     }
     updateCart()
     closeModal()
-}
+})
 
 function updateCart() {
     dom('.menu-openner span').innerHTML = cart.length
@@ -149,12 +153,12 @@ function updateCart() {
     }
 }
 
-function openMobileCart(){
-    if (cart.length > 0) {
-        dom('aside').style.left = "0"
+dom('.menu-openner').addEventListener('click', () => {
+    if(cart.length > 0) {
+        dom('aside').style.left = '0';
     }
-}
+})
 
-function closeMobileCart(){
-        dom('aside').style.left = "100vw"
-}
+dom('.menu-closer').addEventListener('click', () => {
+    dom('aside').style.left = '100vw'
+});
