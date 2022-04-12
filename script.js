@@ -76,7 +76,7 @@ domAll('.pizzaInfo--size').forEach((size) => {
     })
 })
 
-qS('.pizzaInfo--addButton').addEventListener('click', () => {
+dom('.pizzaInfo--addButton').addEventListener('click', () => {
     let sizePizza = parseInt(dom('.pizzaInfo--size.selected').getAttribute('data-key'))
     let identifier = pizzaJson[modalKey].id + '@' + sizePizza
     let key = cart.findIndex((item) => item.idSize == identifier)
