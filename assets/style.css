@@ -5,7 +5,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap);
 body {
     background-color: #9686F9;
-    font-family: 'Hammersmith One', sans-serif;
+    font-family: 'Hammersmith One', 'Roboto',  sans-serif;
     font-size: 15px;
     display: flex;
     font-weight: bold;
